@@ -1,5 +1,5 @@
 # xyz1104 - mini projects
-The collection of mini projects inside the [rodzer.xyz/projects](https://rodzer.xyz/projects) list of my [portfolio](https://rodzer.xyz).
+The collection of mini projects on the [rodzer.xyz/projects](https://rodzer.xyz/projects) list of my [portfolio](https://rodzer.xyz).
 
 | # | Project   | Live Demo   |
 | :---:   | :---: | :---: |
