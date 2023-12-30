@@ -12,6 +12,6 @@ The collection of mini projects on the [rodzer.xyz/projects](https://rodzer.xyz/
 | 07 | [Drink Water Tracker](https://github.com/rogermartitorne/miniProjects/tree/main/2023-11-23%20%40%20Drink%20Water%20Tracking)  | [Live Demo](https://drinkwater1104.netlify.app/) |
 | 08 | [Instant Exchange Rates](https://github.com/rogermartitorne/miniProjects/tree/main/2023-12-24%20%40%20Instant%20Exchange%20Rates)  | [Live Demo](https://instantexchangerates1104.netlify.app/) |
 | 09 | [Movie Seat Booking](https://github.com/rogermartitorne/miniProjects/tree/main/2023-12-27%20%40%20Movie%20Seat%20Booking)   | [Live Demo](https://movieseatbooking1104.netlify.app/) |
-| 09 | [Expense Tracker](https://github.com/rogermartitorne/miniProjects/tree/main/2023-12-29%20%40%20Expense%20Tracker)   | [Live Demo](https://expensetracker1104.netlify.app) |
+| 10 | [Expense Tracker](https://github.com/rogermartitorne/miniProjects/tree/main/2023-12-29%20%40%20Expense%20Tracker)   | [Live Demo](https://expensetracker1104.netlify.app) |
 
 Ideas of projects extracted mainly from [50 Projects in 50 Days](https://github.com/bradtraversy/50projects50days?tab=readme-ov-file) and [JavaScript Vanilla Web Projects](https://github.com/bradtraversy/vanillawebprojects) by [Brad Traversy](https://github.com/bradtraversy)
