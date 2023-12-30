@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instant Exchange Rates</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Instant Exchange Rates: 
+    <select name="currencies" id="currencies">
+      <option value="USD">EUR / USD</option>
+      <option value="ALL">EUR / ALL</option>
+      <option value="AMD">EUR / AMD</option>
+      <option value="BAM">EUR / BAM</option>
+      <option value="BGN">EUR / BGN</option>
+      <option value="BYN">EUR / BYN</option>
+      <option value="CHF">EUR / CHF</option>
+      <option value="CZK">EUR / CZK</option>
+      <option value="DKK">EUR / DKK</option>
+      <option value="GBP">EUR / GBP</option>
+      <option value="GEL">EUR / GEL</option>
+      <option value="HUF">EUR / HUF</option>
+      <option value="ISK">EUR / ISK</option>
+      <option value="MDL">EUR / MDL</option>
+      <option value="MKD">EUR / MKD</option>
+      <option value="NOK">EUR / NOK</option>
+      <option value="PLN">EUR / PLN</option>
+      <option value="RON">EUR / RON</option>
+      <option value="RSD">EUR / RSD</option>
+      <option value="SEK">EUR / SEK</option>
+      <option value="RUB">EUR / RUB</option>
+      <option value="TRY">EUR / TRY</option>
+      <option value="UAH">EUR / UAH</option>
+    </select>    
+</h1>
+  <!-- CONTAINER -->
+  <div id="container">
+    <!-- EUR INPUT -->
+    <label>EUR (€)</label>
+    <input type="number" placeholder="€" id="EUR"></input>
+    
+    <!-- SWAP BUTTON -->
+    <!-- <button onclick="swap()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-exchange-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M17 10h-14l4 -4" />
+        <path d="M7 14h14l-4 4" />
+      </svg>
+    </button> -->
+
+    <!-- USD INPUT -->
+    <input type="number" disabled id="USD" placeholder="$"></input>
+    <label>USD ($)</label>
+  </div>
+
+  <a href="https://rodzer.xyz" target="_blank">Made by <span style="text-decoration: underline;">rodžer1104</span></a>
+
+  <!-- script.js -->
+  <script src="script.js"></script>
+</body>
+</html>

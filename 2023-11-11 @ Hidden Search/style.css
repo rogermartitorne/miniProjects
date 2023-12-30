@@ -1,0 +1,39 @@
+body {
+    background-color: #795cf5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0; /* Remove default margin */
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the container vertically */
+    background-color: white;
+    width: fit-content;
+    height: 40px;
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+input[type="search"] {
+    border: 0px;
+    font-size: medium;
+    transition: width 0.4s ease;
+    width: 0px;
+    padding: 0px;
+}
+
+input[type="search"]:focus {
+    outline: none;
+}
+
+svg {
+    margin-block: auto;
+    margin-inline: 8px;
+}
+
+svg:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Form Input Wave</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Please Login</h1>
+      <!-- Form -->
+      <form>
+        <!-- Form topside container -->
+        <div class="form top">
+          <input type="text" required>
+          <label>
+            <span class="emailSpan" style="transition-delay: 50ms">E</span>
+            <span class="emailSpan" style="transition-delay: 100ms">m</span>
+            <span class="emailSpan" style="transition-delay: 150ms">a</span>
+            <span class="emailSpan" style="transition-delay: 200ms">i</span>
+            <span class="emailSpan" style="transition-delay: 250ms">l</span>
+          </label>
+        </div>
+
+        <!-- Form botside container -->
+        <div class="form bottom">
+          <input type="password" required>
+          <label>
+            <span class="passwordSpan" style="transition-delay: 50ms">P</span>
+            <span class="passwordSpan" style="transition-delay: 100ms">a</span>
+            <span class="passwordSpan" style="transition-delay: 150ms">s</span>
+            <span class="passwordSpan" style="transition-delay: 200ms">s</span>
+            <span class="passwordSpan" style="transition-delay: 250ms">w</span>
+            <span class="passwordSpan" style="transition-delay: 300ms">o</span>
+            <span class="passwordSpan" style="transition-delay: 350ms">r</span>
+            <span class="passwordSpan" style="transition-delay: 400ms">d</span>
+          </label>
+        </div>
+
+        <!-- Login button and register text -->
+        <button class="btn">Login</button>
+        <p class="text">Don't have an account? <a href="#">Register</a> </p>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

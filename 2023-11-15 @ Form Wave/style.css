@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+    font-family: 'Muli', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #4682b4;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #2a4e6c;
+    width: clamp(300px, 25vw, 400px);
+    height: 430px;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: clamp(250px, 20vw, 300px);
+    height: 50px;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 35px;
+}
+
+h1 {
+    padding-block: 20px;
+}
+
+.form input {
+    border: 0px;
+    background-color: transparent;
+    border-bottom: 3px solid white;
+    outline: none;
+    color: white;
+    padding-bottom: 10px;
+    font-size: 1em;
+}
+
+.form input:focus {
+    border-bottom: 3px solid lightblue;
+}
+
+label {
+    position: absolute;
+    width: 250px;
+    margin-bottom: 12px;
+    margin-left: 2px;
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.btn {
+    background-color: #add8e6;
+    color: black;
+    width: clamp(250px, 20vw, 300px);
+    height: 50px;
+    border-radius: 5px;
+    border: 0px;
+    font-size: 0.9em;
+}
+
+.btn:hover {
+    cursor: pointer;
+    scale: 1.01;
+}
+
+a {
+    color: #7fcde6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.text {
+    margin-block: 21px;
+}
+
+.form label span {
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form input:focus + label span {
+    color: lightblue;
+    transform: translateY(-24px);
+}

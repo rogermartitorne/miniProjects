@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+:root {
+  --bg-color: #242333;
+  --highlight-color: #201f2e;
+  --seat-color: #444451;
+  --selected-seat: #6feaf6;
+  --occupied-seat: #ffffff;
+  --font-color: #53534d;
+}
+
+* {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+section {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#movie {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+select {
+  width: 200px;
+  background-color: var(--highlight-color);
+  border-radius: 10px;
+  padding-inline: 10px;
+  margin-left: 10px;
+  height: 30px;
+  color: white;
+  border: 0px;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}
+
+select:focus {
+  outline: none;
+}
+
+div#seatsInfo {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--highlight-color);
+  width: 300px;
+  height: 35px;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--font-color);
+}
+
+#seatsInfo small {
+  margin-left: 10px;
+}
+
+.seat {
+  width: 15px;
+  height: 14px;
+  background-color: var(--seat-color);
+  border-radius: 50% 50% 0 0;
+}
+
+.seat:hover {
+  scale: 1.1;
+  cursor: pointer;
+  transition-duration: 75ms;
+}
+
+.selected {
+  background-color: var(--selected-seat);
+}
+
+.occupied {
+  background-color: var(--occupied-seat);
+}
+
+#screen {
+  background-color: #fff;
+  height: 100px;
+  width: 200px;
+  margin: 15px 0;
+  transform: rotateX(-45deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
+}
+
+div#seats {
+  display: grid;
+}
+
+body section > p {
+  font-size: 14px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block: 5px;
+}
+
+.row .seat {
+    margin-inline: 2px;
+}
+
+span#seats, span#price {
+    color: var(--selected-seat);
+}
+
+button {
+  background-color: var(--highlight-color);
+  border: 0px;
+  color: white;
+  padding-inline: 20px;
+  border-radius: 10px;
+  padding-block: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--selected-seat);
+  color: var(--font-color);
+  transition-duration: 300ms;
+}
