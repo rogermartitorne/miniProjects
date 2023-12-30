@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #f7f7f7;
+    --highlight-color: #ffffff;
+    --main-color: #1481BA;
+    --secondary-color: #11B5E4;
+    --hr-color: #bbbbbb;
+    --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    color: black;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    height: 100vh;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+hr {
+    color: var(--hr-color)
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+}
+
+@media screen and (max-width: 1280px) {
+    section {
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    section {
+        width: 90vw;
+        scale: 0.7;
+    }
+}
+
+#yourBalance {
+    width: 100%;
+    height: 60px;
+}
+
+#yourBalanceNumber {
+    position: absolute;
+    margin-top: -20px;
+}
+
+div#balance {
+    height: 100px;
+    width: 100%;
+    margin-top: 40px;
+    background-color: var(--highlight-color);
+    display: flex;
+    text-align: center;    
+    box-shadow: var(--box-shadow);
+    box-sizing: border-box;
+    padding-block: 10px;
+}
+
+div#income, div#expense {
+    width: 100%;
+}
+
+span#income {
+    color: green;
+}
+
+span#expense {
+    color: red;
+}
+
+span#income, span#expense {
+    font-size: 22px;
+}
+
+div#history {
+    margin-top: 30px;
+    width: 100%;
+    height: fit-content;
+}
+
+.card {
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    height: 30px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 10px;
+    align-items: center;
+    margin-block: 10px;
+    justify-self: end;
+}
+
+#textCard {
+    padding-left: 25px;
+}
+
+.income {
+    border-right: 5px solid green;
+}
+
+.expense {
+    border-right: 5px solid red;
+}
+
+div#transactions {
+    margin-top: 30px;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    height: 45px;
+    border: 1px rgba(128, 128, 128, 0.5) solid;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+label, input {
+    margin-block: 10px;
+}
+
+button {
+    height: 35px;
+    background-color: #9c88ff;
+    border: 0px;
+    color: white;
+    width: 100%;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #8067fd;
+}
+
+.cardRemover {
+    background-color: red;
+    box-shadow: var(--box-shadow);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.cardRemover:hover {
+    background-color: rgb(209, 0, 0);
+}
+
+#tags {
+    display: flex;
+    flex-direction: row;
+}
+
+.tags {
+    border-radius: 30px;
+    width: 70px;
+    height: 30px;
+    margin-inline: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.tags:hover {
+    opacity: 0.9;
+    background-color: gray;
+}
+
+.tags-income {
+    background-color: green;
+}
+
+.tags-expense {
+    background-color: rgb(129, 0, 0);
+}

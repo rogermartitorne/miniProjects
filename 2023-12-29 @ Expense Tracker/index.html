@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <section>
+        <h1 style="font-size: 24px;">Expense Tracker</h1>
+        <div id="yourBalance">
+            <h2 style="font-size: 16px;">YOUR BALANCE</h2>
+            <span id="yourBalanceNumber" style="font-size: 32px; color: green;">0.00€</span>
+        </div>
+        <div id="balance" style="font-size: 16px;">
+            <div id="income">
+                <p>INCOME</p>
+                <span id="income">0€</span>
+            </div>
+            <hr style="height: 50px; align-self: center;">
+            <div id="expense">
+                <p>EXPENSE</p>
+                <span id="expense">0€</span>
+            </div>
+        </div>
+        <div id="history">
+            <h3 style="font-size: 19px;">History</h3>
+            <hr>
+            <div id="historyContainer" style="font-size: 16px;">
+                <!-- <div class="card income"><span id="textCard">Revolut</span><span id="amountCard">3368.20</span></div>
+                <div class="card expense"><span id="textCard">Amazon</span><span id="amountCard">-50.00</span></div>
+                <div class="card income"><span id="textCard">Freelance</span><span id="amountCard">1500.00</span></div>
+                <div class="card expense"><span id="textCard">Netflix</span><span id="amountCard">-12.99</span></div>
+                <div class="card income"><span id="textCard">Salary</span><span id="amountCard">5000.00</span></div>
+                <div class="card expense"><span id="textCard">Uber</span><span id="amountCard">-25.00</span></div>
+                <div class="card income"><span id="textCard">Investment</span><span id="amountCard">250.00</span></div>
+                <div class="card expense"><span id="textCard">Gym Membership</span><span id="amountCard">-30.00</span></div>
+                <div class="card income"><span id="textCard">Dividends</span><span id="amountCard">100.00</span></div> -->
+            </div>
+        </div>
+        <div id="transactions">
+            <h3 style="font-size: 19px;">Add new Transaction</h3>
+            <hr>
+            <form style="font-size: 16px;">
+                <label for="text">Text</label>
+                <input type="text" id="text" name="text" placeholder="Enter text...">
+                <label for="amount">Amount<br>(negative - expense, positive - income)</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter amount...">
+                <button onclick="addTransaction(event)">Add transaction</button>
+            </form>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
