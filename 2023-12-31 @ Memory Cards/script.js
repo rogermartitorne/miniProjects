@@ -42,6 +42,9 @@ function handleSubmit(event) {
   // Add content to the card
   card.textContent = question + answer;
 
+  // Add onclick to card
+  card.onclick = flipCard;
+
   // Add the card to the container
   cardsContainer.appendChild(card);
 
@@ -55,6 +58,10 @@ function handleSubmit(event) {
 
   // Close the cardForm
   closeForm();
+}
+
+function flipCard() {
+  
 }
 
 function clearCards() {
