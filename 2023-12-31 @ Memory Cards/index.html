@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
+    <title>Memory Cards</title>
+  </head>
+  <body>
+    <div id="container">
+    <h1>Memory Cards<button id="newCard"><i class="ti ti-plus"></i>Add New Card</button></h1>
+    <button onclick="clearCards()" id="clearCards"><i class="ti ti-trash"></i>Clear Cards</button>
+    <div id="cardsContainer">
+      <!-- Cards go here -->
+    </div>
+    <div id="cardsNavigation">
+      <button onclick="previousCard()" id="previousCard"><i class="ti ti-arrow-left"></i></button>
+      <p><span id="currentCard">0</span> / <span id="totalCards">0</span></p>
+      <button onclick="nextCard()" id="nextCard"><i class="ti ti-arrow-right"></i></button>
+    </div>
+    <!-- Form with card information -->
+    <div id="cardFormContainer">
+      <form id="cardForm">
+        <h1>Add New Card<i class="ti ti-x" onclick="closeForm()" style="font-size: 0.5em; margin-left: 20px;"></i></h1>
+        <label for="question">Question</label>
+        <textarea name="question" id="question" placeholder="Enter question..."></textarea>
+        <label for="answer">Answer</label>
+        <textarea name="answer" id="answer" placeholder="Enter answer..."></textarea>
+        <button type="submit" id="submitCard"><i class="ti ti-plus"></i>Add Card</button>
+    </form>
+  </div>
+    <script src="script.js"></script>
+  </body>
+</html>
