@@ -131,6 +131,8 @@ p {
     position: absolute;
     transform: rotateX(0deg);
     transition: transform 0.6s;
+    padding: 10px;
+    text-align: center;
 }
 
 .back {
@@ -144,6 +146,8 @@ p {
     position: absolute;
     transform: rotateX(180deg);
     transition: transform 0.6s;
+    padding: 10px;
+    text-align: center;
 }
 
 .show-answer {
