@@ -6,6 +6,10 @@
   box-sizing: border-box; 
 }
 
+body {
+    overflow: hidden;
+}
+
 #container {
     font-family: 'Lato', sans-serif;
     display: flex;

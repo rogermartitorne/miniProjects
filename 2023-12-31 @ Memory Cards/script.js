@@ -1,5 +1,6 @@
 // Array of cards
-let cards = JSON.parse(localStorage.getItem("cards")) || [];
+let cards = [];
+let storageCards = JSON.parse(localStorage.getItem("cards")) || [];
 
 // Card information
 const currentCard = document.getElementById("currentCard");
@@ -22,32 +23,6 @@ const addCardButton = document
     const cardForm = document.getElementById("cardForm");
     cardForm.addEventListener("submit", handleSubmit);
   });
-
-// Save cards to localStorage
-function saveToLocalStorage() {
-  const savedCards = cards.map(card => {
-    return {
-      className: card.className,
-      content: {
-        question: card.querySelector('.front').textContent,
-        answer: card.querySelector('.back').textContent
-      }
-    };
-  });
-
-  localStorage.setItem('cards', JSON.stringify(savedCards));
-}
-
-// Function to load cards from localStorage
-function loadFromLocalStorage() {
-  const storedCards = JSON.parse(localStorage.getItem('cards')) || [];
-  storedCards.forEach(savedCard => {
-    createCard(savedCard.content.question, savedCard.content.answer, savedCard.className);
-  });
-}
-
-// Initial load from localStorage
-loadFromLocalStorage();
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -127,14 +102,15 @@ function createCard(question, answer) {
     }
   });
 
+  // Save the card content to localStorage
+  storageCards.push({ question, answer });
+  localStorage.setItem("cards", JSON.stringify(storageCards));
+
   // Add the card to the array
   cards.push(card);
 
   // Update the navigation information
   updateNavigation();
-
-  // Save to localStorage
-  saveToLocalStorage();
 }
 
 // Function to update the navigation information
@@ -162,18 +138,20 @@ function clearCards() {
   currentCard.textContent = 0;
   totalCards.textContent = 0;
 
+  // Remove cards from localStorage
+  storageCards.length = 0;
+  localStorage.removeItem("cards");
+
   // Update the navigation information
   updateNavigation();
-
-  // Save to localStorage
-  saveToLocalStorage();
 }
 
 // Modify the nextCard and prevCard functions to update localStorage
 function nextCard() {
   for (let i = 0; i < cards.length; i++) {
     if (cards[i].classList.contains("active")) {
-      if (i < cards.length - 1) { // Check if it's not the last card
+      if (i < cards.length - 1) {
+        // Check if it's not the last card
         cards[i].className = "card fade-out";
         cards[i + 1].className = "card fade-in active";
       }
@@ -181,33 +159,23 @@ function nextCard() {
     }
   }
 
-  // Update the navigation information if the operation is valid
-  if (i < cards.length - 1) {
-    updateNavigation();
-
-    // Save to localStorage
-    saveToLocalStorage();
-  }
+  // Update navigation information
+  updateNavigation();
 }
 
 function prevCard() {
   for (let i = 0; i < cards.length; i++) {
     if (cards[i].classList.contains("active")) {
-      if (i > 0) { // Check if it's not the first card
+      if (i > 0) {
+        // Check if it's not the first card
         cards[i].className = "card fade-out";
         cards[i - 1].className = "card fade-in active";
       }
       break;
     }
   }
-
-  // Update the navigation information if the operation is valid
-  if (i > 0) {
-    updateNavigation();
-
-    // Save to localStorage
-    saveToLocalStorage();
-  }
+  // Update navigation information
+  updateNavigation();
 }
 
 function closeForm() {
@@ -217,3 +185,24 @@ function closeForm() {
   // Empty the form
   cardForm.reset();
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if there are cards in localStorage
+  if (!localStorage.getItem("cards")) {
+    localStorage.setItem("cards", JSON.stringify([]));
+  }
+
+  // Retrieve the card content from localStorage
+  storageCards = JSON.parse(localStorage.getItem("cards")) || [];
+
+  // Clear the existing cards in the container
+  cardsContainer.innerHTML = '';
+
+  // Recreate the cards from the stored content
+  storageCards.forEach(({ question, answer }) => {
+    createCard(question, answer);
+  });
+
+  // Update the navigation information
+  updateNavigation();
+});
