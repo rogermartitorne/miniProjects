@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
 
 * {
   margin: 0;
@@ -76,20 +75,68 @@ p {
     width: 100%;
     background: #fff;
     box-shadow: 0px 0px 18px 4px rgba(0,0,0,0.2);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: relative;
     transition: transform 0.6s;
 }
 
-.card::after {
+.active {
+    display: flex;
+}
+
+.front::after, .back::after {
     content: "Click to flip the card.";
     font-size: 12px;
     position: absolute;
     top: 10px;
     right: 10px;
     color: #ddd;
+}
+
+.front::before {
+    content: "Question.";
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #ddd;
+}
+
+.back::before {
+    content: "Answer.";
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #ddd;
+}
+
+.front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    transform: rotateX(0deg);
+    transition: transform 0.6s;
+}
+
+.back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    transform: rotateX(180deg);
+    transition: transform 0.6s;
 }
 
 .show-answer {
@@ -143,4 +190,32 @@ textarea {
     background-color: #fff;
     padding-inline: 16px;
     padding-block: 10px;
+}
+
+/* Fade-in Animation */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fade-in 0.4s;
+}
+
+/* Fade-out Animation */
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fade-out 0.4s;
 }
