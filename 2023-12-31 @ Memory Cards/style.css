@@ -77,7 +77,7 @@ p {
 }
 
 .card {
-    font-size: 1.5em;
+    font-size: clamp(16px, 1.5vw, 20px);
     height: 100%;
     width: 100%;
     background: #fff;
@@ -234,6 +234,9 @@ textarea {
     #buttons {
         scale: 0.7;
     }
+    #newCard {
+        scale: 0.7;
+    }    
     #cardsContainer {
         height: 200px;
         width: 300px;
@@ -252,6 +255,9 @@ textarea {
         width: 100%;
     }
     #cardForm button {
-        width: 100%;
+        scale: 0.7;
+    }
+    label {
+        font-size: 12px;
     }
 }

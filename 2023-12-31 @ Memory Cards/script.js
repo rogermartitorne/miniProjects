@@ -49,82 +49,86 @@ function createCard(question, answer) {
   if (existingCard) {
     alert("This card already exists");
   } else {
-    // Create the card
-    const card = document.createElement("div");
-    if (cards.length === 0) {
-      card.className = "card active";
+    if (question === "" || answer === "") {
+      alert("Please fill in both fields");
     } else {
-      for (let i = 0; i < cards.length; i++) {
-        if (cards[i].classList && cards[i].classList.contains("active")) {
-          card.className = "card";
+      // Create the card
+      const card = document.createElement("div");
+      if (cards.length === 0) {
+        card.className = "card active";
+      } else {
+        for (let i = 0; i < cards.length; i++) {
+          if (cards[i].classList && cards[i].classList.contains("active")) {
+            card.className = "card";
+          }
         }
       }
-    }
 
-    // Create the card content (question and answer)
-    const cardQuestion = document.createElement("div");
-    cardQuestion.className = "front";
-    cardQuestion.textContent = question;
+      // Create the card content (question and answer)
+      const cardQuestion = document.createElement("div");
+      cardQuestion.className = "front";
+      cardQuestion.textContent = question;
 
-    const cardAnswer = document.createElement("div");
-    cardAnswer.className = "back";
-    cardAnswer.textContent = answer;
+      const cardAnswer = document.createElement("div");
+      cardAnswer.className = "back";
+      cardAnswer.textContent = answer;
 
-    // Add the card content to the card
-    card.appendChild(cardQuestion);
-    card.appendChild(cardAnswer);
+      // Add the card content to the card
+      card.appendChild(cardQuestion);
+      card.appendChild(cardAnswer);
 
-    // Add the card to the array
-    cards.push(card);
-    console.log("Card created", cards);
+      // Add the card to the array
+      cards.push(card);
+      console.log("Card created", cards);
 
-    // Save the card content to localStorage if it doesn't already exist
-    const existingStorageCard = storageCards.find(
-      (card) => card.question === question && card.answer === answer
-    );
-    if (!existingStorageCard) {
-      storageCards.push({ question, answer });
-      localStorage.setItem("cards", JSON.stringify(storageCards));
-      console.log("Card added to storageCards array", storageCards);
-    }
-
-    // Add the card to the container
-    cardsContainer.appendChild(card);
-
-    // Variable to know the card status (rotation)
-    let cardStatus = true;
-
-    // Card flip animation + logic
-    card.addEventListener("click", function () {
-      card.classList.toggle("show-answer");
-
-      if (cardStatus) {
-        // Hide the question
-        cardQuestion.style.display = "none";
-
-        // Set delay of 0.2s to show the answer
-        setTimeout(() => {
-          cardAnswer.style.backfaceVisibility = "visible";
-        }, 200);
-
-        // Change cardStatus
-        cardStatus = false;
-      } else {
-        // Hide the answer
-        cardAnswer.style.backfaceVisibility = "hidden";
-
-        // Set delay of 0.2s to show the question
-        setTimeout(() => {
-          cardQuestion.style.display = "flex";
-        }, 200);
-
-        // Change cardStatus
-        cardStatus = true;
+      // Save the card content to localStorage if it doesn't already exist
+      const existingStorageCard = storageCards.find(
+        (card) => card.question === question && card.answer === answer
+      );
+      if (!existingStorageCard) {
+        storageCards.push({ question, answer });
+        localStorage.setItem("cards", JSON.stringify(storageCards));
+        console.log("Card added to storageCards array", storageCards);
       }
-    });
 
-    // Update the navigation information
-    updateNavigation();
+      // Add the card to the container
+      cardsContainer.appendChild(card);
+
+      // Variable to know the card status (rotation)
+      let cardStatus = true;
+
+      // Card flip animation + logic
+      card.addEventListener("click", function () {
+        card.classList.toggle("show-answer");
+
+        if (cardStatus) {
+          // Hide the question
+          cardQuestion.style.display = "none";
+
+          // Set delay of 0.2s to show the answer
+          setTimeout(() => {
+            cardAnswer.style.backfaceVisibility = "visible";
+          }, 200);
+
+          // Change cardStatus
+          cardStatus = false;
+        } else {
+          // Hide the answer
+          cardAnswer.style.backfaceVisibility = "hidden";
+
+          // Set delay of 0.2s to show the question
+          setTimeout(() => {
+            cardQuestion.style.display = "flex";
+          }, 200);
+
+          // Change cardStatus
+          cardStatus = true;
+        }
+      });
+
+      // Update the navigation information
+      updateNavigation();
+    }
   }
 }
 
@@ -237,13 +241,12 @@ function deleteCurrentCard() {
   }
 
   // Update the navigation information
-  if(cards.length === 0) {
+  if (cards.length === 0) {
     currentCard.textContent = 0;
     updateNavigation();
   } else {
     updateNavigation();
   }
-  
 }
 
 document.addEventListener("DOMContentLoaded", function () {
