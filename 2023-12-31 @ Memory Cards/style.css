@@ -50,6 +50,13 @@ button:hover {
     left: 20px;
 }
 
+#deleteCurrentCard {
+    position: absolute;
+    padding: 12px;
+    bottom: 20px;
+    left: 150px;
+}
+
 #cardsContainer {
     height: 300px;
     width: 500px;

@@ -48,8 +48,6 @@ function createCard(question, answer) {
   );
   if (existingCard) {
     alert("This card already exists");
-  } else if (question.trim() === "" || answer.trim() === "") {
-    alert("Please enter both question and answer");
   } else {
     // Create the card
     const card = document.createElement("div");
@@ -77,7 +75,7 @@ function createCard(question, answer) {
     card.appendChild(cardAnswer);
 
     // Add the card to the array
-    cards.push(card)
+    cards.push(card);
     console.log("Card created", cards);
 
     // Save the card content to localStorage if it doesn't already exist
@@ -133,9 +131,13 @@ function createCard(question, answer) {
 // Function to update the navigation information
 function updateNavigation() {
   for (let i = 0; i < cards.length; i++) {
-    if (cards[i].classList && cards[i].classList.contains("active")) {
-      currentCard.textContent = i + 1;
-      break;
+    if (cards.length === 0) {
+      currentCard.textContent = cards.length;
+    } else {
+      if (cards[i].classList && cards[i].classList.contains("active")) {
+        currentCard.textContent = i + 1;
+        break;
+      }
     }
   }
   totalCards.textContent = cards.length;
@@ -205,6 +207,43 @@ function closeForm() {
 
   // Empty the form
   cardForm.reset();
+}
+
+function deleteCurrentCard() {
+  const activeCard = document.querySelector(".card.active");
+
+  if (activeCard) {
+    // Get the index of the active card
+    const index = Array.from(cards).indexOf(activeCard);
+
+    // Remove the card from the cards array
+    cards.splice(index, 1);
+    storageCards.splice(index, 1);
+
+    // Remove the card
+    activeCard.remove();
+
+    // Assign the active class to the next or previous card
+    if (cards.length > 0) {
+      if (index === cards.length) {
+        cards[index - 1].className = "card active";
+      } else {
+        cards[index].className = "card active";
+      }
+    }
+
+    // Update the localStorage
+    localStorage.setItem("cards", JSON.stringify(storageCards));
+  }
+
+  // Update the navigation information
+  if(cards.length === 0) {
+    currentCard.textContent = 0;
+    updateNavigation();
+  } else {
+    updateNavigation();
+  }
+  
 }
 
 document.addEventListener("DOMContentLoaded", function () {
