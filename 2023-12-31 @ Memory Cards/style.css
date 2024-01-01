@@ -43,18 +43,13 @@ button:hover {
     margin-left: 20px;
 }
 
-#clearCards {
+#buttons {
     position: absolute;
-    padding: 12px;
-    bottom: 20px;
-    left: 20px;
+    bottom: 10px;
 }
 
-#deleteCurrentCard {
-    position: absolute;
+#clearCards, #deleteCurrentCard {
     padding: 12px;
-    bottom: 20px;
-    left: 150px;
 }
 
 #cardsContainer {
@@ -230,4 +225,33 @@ textarea {
 
 .fade-out {
     animation: fade-out 0.4s;
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 20px;
+    }
+    #buttons {
+        scale: 0.7;
+    }
+    #cardsContainer {
+        height: 200px;
+        width: 300px;
+    }
+    #clearCards {
+        left: 10px;
+    }
+    #deleteCurrentCard {
+        left: 100px;
+    }
+    #cardFormContainer {
+        height: 100%;
+        width: 100%;
+    }
+    #cardForm {
+        width: 100%;
+    }
+    #cardForm button {
+        width: 100%;
+    }
 }
