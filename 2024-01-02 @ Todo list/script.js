@@ -19,8 +19,8 @@ form.addEventListener("submit", (event) => {
 function createTodo(todoKey, content, done) {
   if (content === "" || content === null) {
     alert("You must write something!");
-  } else if (content.length > 20) {
-    alert("Todo content should not exceed 20 characters!");
+  } else if (content.length > 30) {
+    alert("Todo content should not exceed 30 characters!");
   } else {
     const existingTodo = todos.find((todo) => todo.todoKey === todoKey);
     // Get the container where the cards will be added
