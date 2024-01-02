@@ -17,62 +17,91 @@ form.addEventListener("submit", (event) => {
 });
 
 function createTodo(todoKey, content, done) {
-  const existingTodo = todos.find((todo) => todo.todoKey === todoKey);
-  // Get the container where the cards will be added
-  const container = document.getElementById("todosContainer");
+  if (content === "") {
+    alert("You must write something!");
+  } else {
+    const existingTodo = todos.find((todo) => todo.todoKey === todoKey);
+    // Get the container where the cards will be added
+    const container = document.getElementById("todosContainer");
 
-  // Create the card
-  const todo = document.createElement("div");
+    // Create the card
+    const todo = document.createElement("div");
 
-  // Set the class based on the "done" status
-  todo.className = `todo ${done ? "done" : ""}`;
+    // Set the class based on the "done" status
+    todo.className = `todo ${done ? "done" : ""}`;
 
-  // Put the content inside the card
-  todo.textContent = content;
+    // Put the content inside the card
+    todo.textContent = content;
 
-  // Add the card to the container
-  let firstChild = container.firstChild;
-  container.insertBefore(todo, firstChild);
+    // Add the card to the container
+    let firstChild = container.firstChild;
+    container.insertBefore(todo, firstChild);
 
-  // Save the todo content to localStorage
-  if (!existingTodo) {
-    todos.push({ todoKey, content }); // Store the todo with its key
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }
-
-  // Clear the form
-  form.reset();
-
-  // Add the event listener to the card for both click and touchstart events
-  todo.addEventListener("click", handleTodoToggle);
-  todo.addEventListener("touchstart", handleTodoToggle);
-  todo.addEventListener("touchend", handleTodoToggle);
-
-  function handleTodoToggle() {
-    todo.classList.toggle("done");
-
-    // Update the corresponding todo object in the array
-    const updatedTodo = todos.find((item) => item.todoKey === todoKey);
-    if (updatedTodo) {
-      updatedTodo.done = todo.classList.contains("done");
+    // Save the todo content to localStorage
+    if (!existingTodo) {
+      todos.push({ todoKey, content }); // Store the todo with its key
       localStorage.setItem("todos", JSON.stringify(todos));
     }
-  }
 
-  // Add the event listener to the card
-  todo.addEventListener("contextmenu", deleteTodo);
-  todo.addEventListener("touchmove", deleteTodo);
+    // Clear the form
+    form.reset();
 
-  function deleteTodo(e) {
-    e.preventDefault();
+    // Add the event listener to the card for both click and touchstart events
+    todo.addEventListener("click", completeTodo);
+    todo.addEventListener("touchstart", completeTodo);
+    todo.addEventListener("touchend", completeTodo);
 
-    // Remove the todo from the array
-    const index = todos.findIndex((todo) => todo.todoKey === todoKey);
-    todos.splice(index, 1); // Use splice to remove the item
-    localStorage.setItem("todos", JSON.stringify(todos));
+    function completeTodo() {
+      todo.classList.toggle("done");
 
-    // Remove the todo from the DOM
-    todo.remove();
+      // Update the corresponding todo object in the array
+      const updatedTodo = todos.find((item) => item.todoKey === todoKey);
+      if (updatedTodo) {
+        updatedTodo.done = todo.classList.contains("done");
+        localStorage.setItem("todos", JSON.stringify(todos));
+      }
+    }
+
+    // Add the event listener to the card
+    todo.addEventListener("contextmenu", deleteTodo);
+
+    let touchStartX;
+    let touchStartY;
+    const minMoveDistance = 150; // Puedes ajustar este valor según tus necesidades
+
+    todo.addEventListener("touchstart", function (e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    });
+
+    todo.addEventListener("touchmove", function (e) {
+      const touchMoveX = e.touches[0].clientX;
+      const touchMoveY = e.touches[0].clientY;
+
+      const distanceX = Math.abs(touchMoveX - touchStartX);
+      const distanceY = Math.abs(touchMoveY - touchStartY);
+
+      if (distanceX > minMoveDistance || distanceY > minMoveDistance) {
+        // Se ha movido lo suficiente, ejecutar la función deleteTodo
+        deleteTodo(e);
+      }
+    });
+
+    function deleteTodo(e) {
+      e.preventDefault();
+
+      // Remove the todo from the array
+      const index = todos.findIndex((todo) => todo.todoKey === todoKey);
+      todos.splice(index, 1); // Use splice to remove the item
+      localStorage.setItem("todos", JSON.stringify(todos));
+
+      // Remove the todo from the DOM
+      todo.remove();
+
+      // Restart variables
+      touchStartX = null;
+      touchStartY = null;
+    }
   }
 }
 
