@@ -17,8 +17,10 @@ form.addEventListener("submit", (event) => {
 });
 
 function createTodo(todoKey, content, done) {
-  if (content === "") {
+  if (content === "" || content === null) {
     alert("You must write something!");
+  } else if (content.length > 20) {
+    alert("Todo content should not exceed 20 characters!");
   } else {
     const existingTodo = todos.find((todo) => todo.todoKey === todoKey);
     // Get the container where the cards will be added
@@ -74,6 +76,8 @@ function createTodo(todoKey, content, done) {
       touchStartY = e.touches[0].clientY;
     });
 
+    let swipeDirection;
+
     todo.addEventListener("touchmove", function (e) {
       const touchMoveX = e.touches[0].clientX;
       const touchMoveY = e.touches[0].clientY;
@@ -81,8 +85,24 @@ function createTodo(todoKey, content, done) {
       const distanceX = Math.abs(touchMoveX - touchStartX);
       const distanceY = Math.abs(touchMoveY - touchStartY);
 
+      if (touchMoveX < touchStartX) {
+        swipeDirection = "left";
+      } else {
+        swipeDirection = "right";
+      }
+
+      // Do not call deleteTodo here
+    });
+
+    todo.addEventListener("touchend", function (e) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const touchEndY = e.changedTouches[0].clientY;
+
+      const distanceX = Math.abs(touchEndX - touchStartX);
+      const distanceY = Math.abs(touchEndY - touchStartY);
+
       if (distanceX > minMoveDistance || distanceY > minMoveDistance) {
-        // Se ha movido lo suficiente, ejecutar la función deleteTodo
+        // The touch has moved far enough, call the deleteTodo function
         deleteTodo(e);
       }
     });
@@ -95,8 +115,17 @@ function createTodo(todoKey, content, done) {
       todos.splice(index, 1); // Use splice to remove the item
       localStorage.setItem("todos", JSON.stringify(todos));
 
-      // Remove the todo from the DOM
-      todo.remove();
+      // Add the delete class to start the animation
+      if (swipeDirection === "left") {
+        todo.classList.add("todo-delete-left");
+      } else {
+        todo.classList.add("todo-delete-right");
+      }
+
+      // Remove the todo from the DOM after the animation is done
+      setTimeout(() => {
+        todo.remove();
+      }, 500); // Adjust the delay time (in milliseconds) as needed
 
       // Restart variables
       touchStartX = null;

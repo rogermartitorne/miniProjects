@@ -102,6 +102,18 @@ input::placeholder {
   border-radius: 10px;
 }
 
+.todo-delete-left {
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.todo-delete-right {
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateX(100%);
+}
+
 .todo:hover {
   cursor: pointer;
 }
