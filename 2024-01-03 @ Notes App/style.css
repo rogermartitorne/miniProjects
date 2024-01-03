@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+
+:root {
+  --rich-black: #07090f;
+  --ghost-white: #f7f5fb;
+  --sky-blue: #2dc7ff;
+  --picton-blue: rgba(0, 171, 231, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Popins", sans-serif;
+}
+
+body {
+  background-color: var(--ghost-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* My Notes title */
+header > h1 {
+  color: var(--picton-blue);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 10rem);
+  text-align: center;
+  margin: 2rem 0;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+header > button {
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  color: var(--picton-blue);
+  border: 1px solid;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.6rem, 1vw, 1rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+header > button:hover {
+  background-color: var(--picton-blue);
+  color: white;
+}
