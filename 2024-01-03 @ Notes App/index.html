@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="notes.css" />
-    <link rel="stylesheet" href="info.css">
+    <link rel="stylesheet" href="info.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes</title>
   </head>
@@ -21,7 +21,9 @@
       <h1>My Notes</h1>
       <button id="addNote">Add New Note</button>
     </header>
-    <div id="notesContainer">
+    <div id="notesContainer"></div>
+    <div id="note-view" style="display: none">
+      <!-- Note view content will go here -->
     </div>
     <div id="info">
       <button onclick="clearAll()">Clear All Notes</button>

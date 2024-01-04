@@ -80,7 +80,10 @@ document
     e.target.closest(".note").remove();
 
     // Delete note from the notes array
-    const index = notesArray.findIndex((note) => note.title === title && note.content === content && note.date === date);
+    const index = notesArray.findIndex(
+      (note) =>
+        note.title === title && note.content === content && note.date === date
+    );
     notesArray.splice(index, 1); // Use splice to remove the item
     localStorage.setItem("notesArray", JSON.stringify(notesArray));
   });
@@ -132,3 +135,61 @@ window.onload = function loadNotes() {
     `;
   });
 };
+
+// Open note (CSS class note-view)
+document
+  .getElementById("notesContainer")
+  .addEventListener("click", function (e) {
+    // Get note index from notesArray
+    const noteIndex = Array.from(e.target.closest(".note").parentNode.children)
+      .reverse()
+      .indexOf(e.target.closest(".note"));
+
+    // Get note from notesArray
+    const note = notesArray[noteIndex];
+
+    // Check if note is defined
+    if (note) {
+      // Get note title
+      const noteTitle = note.title;
+
+      // Get note content
+      let noteContent = note.content;
+
+      // Get note date
+      const noteDate = note.date;
+
+      // Display the note
+      document.getElementById("note-view").style.display = "flex";
+
+      // Add note to the note view
+      document.getElementById("note-view").innerHTML = `
+        <div class="note-view-title">
+            <h2>${noteTitle}</h2>
+            <p>${noteDate}</p>
+        </div>
+        <hr>
+        <div class="note-view-content">
+            <textarea>${noteContent}</textarea>
+        </div>
+      `;
+
+      // Enable editing of note content
+      const noteContentElement = document.querySelector(".note-view-content textarea");
+      noteContentElement.addEventListener("input", function (e) {
+        noteContent = e.target.value;
+      });
+    }
+  });
+
+// Close note view
+// document.getElementById("note-view").addEventListener("click", function (e) {
+//   // Hide the note view
+//   document.getElementById("note-view").style.display = "none";
+// });
+
+// Change textarea size based on content inside .note-view-content > textarea
+document.querySelector(".note-view-content textarea").addEventListener("change", function (e) {
+  e.target.style.height = "auto";
+  e.target.style.height = e.target.scrollHeight + "px";
+});

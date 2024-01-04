@@ -51,10 +51,9 @@
 
 /* Note title */
 .noteTitle > h2 {
-  font-size: 1.5rem;
   margin: 0;
   color: var(--picton-blue);
-  font-size: clamp(1rem, 1.5vw, 2rem);
+  font-size: clamp(1rem, 1vw, 2rem);
 }
 
 /* Note date */
@@ -67,8 +66,15 @@
 
 /* Note card hover effect */
 .note:hover {
-  background-color: var(--picton-blue);
+  background-color: rgba(0, 171, 231, 0.7);
+}
+
+.note:hover > .noteTitle > h2 {
   color: white;
+}
+
+.note:hover > .noteTitle > p {
+  color: #e4e4e4;
 }
 
 /* Note form */
@@ -81,15 +87,15 @@
   height: 100vh;
   position: absolute;
   z-index: 2;
-  background-color: rgb(0, 171, 231);
-  gap: 20px;
+  background-color: var(--ghost-white);
 }
 
-#formNote > input, textarea {
+#formNote > input,
+textarea {
   padding: 0.5rem 1rem;
   border: none;
   background-color: white;
-  color: var(--picton-blue);
+  color: var(--rich-black);
   font-family: "Poppins", sans-serif;
   transition: all 0.3s ease;
   box-sizing: border-box;
@@ -98,30 +104,115 @@
 #formNote > input {
   width: clamp(75vw, 50vw, 80vw);
   height: 30px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  outline: none;
 }
 
 #formNote > textarea {
   width: clamp(75vw, 50vw, 80vw);
   height: 300px;
   max-height: 300px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   resize: none;
   overflow: auto;
+  outline: none;
+}
+
+#formButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: clamp(75vw, 50vw, 80vw);
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 #formButtons > button {
   margin: 0 1rem;
   padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
+  border: 2px solid transparent;
+  border-radius: 10px;
   background-color: white;
-  color: var(--rich-black);
-  border: 2px solid var(--picton-blue);
+  color: var(--picton-blue);
   font-family: "Poppins", sans-serif;
+  font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
+#formButtons > button:hover {
+  background-color: var(--picton-blue);
+  color: white;
+}
+
 .note > h2 {
   font-size: 1.5rem;
+}
+
+/* Note-view content */
+#note-view {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 2;
+  background-color: var(--ghost-white);
+}
+
+.note-view-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: clamp(75vw, 50vw, 80vw);
+  height: clamp(10vh, 10vh, 20vh);
+  background-color: #ddd;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  position: relative;
+}
+
+.note-view-title > p {
+  position: absolute;
+  right: 20px;
+  font-size: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+.note-view-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  max-height: 80vh;
+  min-height: 80px;
+  background-color: #ddd;
+  width: clamp(75vw, 50vw, 80vw);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 20px;
+}
+
+.note-view-content > textarea {
+  width: 100%;
+  min-height: 40vh;
+  resize: none;
+  overflow: auto;
+  outline: none;
+  border: none;
+  background-color: #ddd;
+  color: var(--rich-black);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+hr {
+  width: clamp(65vw, 50vw, 70vw);
+  border: 1px solid #ddd;
 }
